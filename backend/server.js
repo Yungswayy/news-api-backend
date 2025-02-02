@@ -42,8 +42,11 @@ app.use((req, res, next) => {
 
 // ✅ Root endpoint for testing
 app.get("/", (req, res) => {
-    console.log("✅ Root endpoint hit - Sending response");
-    res.status(200).send("✅ API is running...");
+    console.log("✅ Root endpoint hit - Sending response immediately");
+
+    // ✅ Send a quick response
+    res.setHeader("Content-Type", "text/plain");  
+    res.status(200).send("✅ API is alive and responding!");
 });
 
 // ✅ User authentication routes
