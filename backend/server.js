@@ -91,9 +91,8 @@ app.post("/api/login", async (req, res) => {
         if (!validPassword)
             return res.status(401).json({ error: "Invalid credentials" });
 
-        const token = jwt.sign({ username }, process.env.JWT_SECRET, {
-            expiresIn: "1h",
-        });
+       const token = jwt.sign({ username }, process.env.JWT_SECRET);
+
         res.json({ token });
     } catch (error) {
         console.error("❌ Login Error:", error.message);
