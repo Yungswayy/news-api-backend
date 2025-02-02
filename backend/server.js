@@ -42,10 +42,12 @@ app.use((req, res, next) => {
 
 // ✅ Root endpoint for testing
 app.get("/", (req, res) => {
-    console.log("✅ Root endpoint hit - Sending response immediately");
+    console.log("📥 Root endpoint was hit! ✅ Sending response...");
 
-    // ✅ Send a quick response
-    res.setHeader("Content-Type", "text/plain");  
+    // ✅ Log request headers to see if any important data is missing
+    console.log("🔍 Request Headers:", req.headers);
+
+    // ✅ Send a basic response
     res.status(200).send("✅ API is alive and responding!");
 });
 
