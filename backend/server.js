@@ -55,7 +55,14 @@ app.get("/", (req, res) => {
 app.post("/api/register", async (req, res) => {
     try {
         const { username, password } = req.body;
-        const hashedPassword = await bcrypt.hash(password, 10);
+        if (!password) {
+    return res.status(400).json({ error: "Password is required" });
+}
+console.log("🔹 Password received:", password);
+
+const hashedPassword = await bcrypt.hash(password.toString(), 10);
+console.log("✅ Hashed Password:", hashedPassword);
+
         await pool.query(
             "INSERT INTO users (username, password) VALUES ($1, $2)",
             [username, hashedPassword]
