@@ -138,7 +138,24 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+const PORT = process.env.PORT || 5000;
+
+// ✅ Log when the server starts
+app.listen(PORT, () => {
+    console.log(`✅ Server running on port ${PORT}`);
+});
+
+// ✅ Middleware to log all incoming requests
+app.use((req, res, next) => {
+    console.log(`📥 Received request: ${req.method} ${req.url}`);
+    next();
+});
+
+// ✅ Root endpoint for testing
+app.get("/", (req, res) => {
+    console.log("✅ Root endpoint hit");
+    res.send("API is running...");
+});
 
 const PORT = process.env.PORT || 5000; // ✅ Use Render’s assigned port
 
