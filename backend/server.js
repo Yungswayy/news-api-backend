@@ -147,8 +147,8 @@ app.use((req, res, next) => {
 
 // ✅ Root endpoint for testing
 app.get("/", (req, res) => {
-    console.log("✅ Root endpoint hit - Sending response");
-    res.status(200).send("✅ API is running...");
+    console.log("✅ Root endpoint hit - Sending response"); // Log for debugging
+    res.status(200).send("✅ API is running..."); // Ensure a proper response is sent
 });
 
 
