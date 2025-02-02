@@ -133,7 +133,9 @@ app.get("/api/fact-check", authenticate, async (req, res) => {
 });
 
 // ✅ Port Fix: Ensure the server listens on Render’s assigned port
+const PORT = process.env.PORT || 5000;
 
+app.listen(PORT, () => {
     console.log(`✅ Server running on port ${PORT}`);
 });
 
@@ -148,6 +150,5 @@ app.get("/", (req, res) => {
     console.log("✅ Root endpoint hit");
     res.send("API is running...");
 });
- const PORT = process.env.PORT || 5000; // ✅ Use Render’s assigned port
 
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
